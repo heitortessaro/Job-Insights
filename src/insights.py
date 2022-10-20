@@ -12,6 +12,12 @@ def get_unique_job_types(path):
 
 def filter_by_job_type(jobs, job_type):
     """Filters a list of jobs by job_type"""
+    job_type_list = [
+        job
+        for job in jobs
+        if (len(job["job_type"]) > 0 and job["job_type"] == job_type)
+    ]
+    return job_type_list
 
 
 # python3 -c 'from insights import get_unique_industries;
@@ -40,7 +46,12 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    job_by_industry = [
+        job
+        for job in jobs
+        if (len(job["industry"]) > 0 and job["industry"] == industry)
+    ]
+    return job_by_industry
 
 
 def get_max_salary(path):
