@@ -11,39 +11,20 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    """Filters a list of jobs by job_type"""
 
 
+# python3 -c 'from insights import get_unique_industries;
+#  get_unique_industries("jobs.csv")'
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    """Checks all different industries and returns a list of them"""
+    jobs_info = read(path)
+    industry_types = set()
+    for row in jobs_info:
+        industry_types.add(row["industry"])
+    print(list(industry_types))
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return list(industry_types)
 
 
 def filter_by_industry(jobs, industry):
