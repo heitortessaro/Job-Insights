@@ -59,13 +59,12 @@ def get_max_salary(path):
         The maximum salary paid out of all job opportunities
     """
     jobs_info = read(path)
-    industry_types = set()
-    for row in jobs_info:
-        industry_types.add(row["industry"])
-    print(list(industry_types))
-
-    return list(industry_types)
-    pass
+    max_salaries = [
+        int(row["max_salary"], base=10)
+        for row in jobs_info
+        if (len(row["max_salary"]) > 0 and row["max_salary"].isdigit())
+    ]
+    return max(max_salaries)
 
 
 def get_min_salary(path):
